@@ -1,0 +1,40 @@
+<h1>
+  {{ 'Server' }} number is {{ serverId }} and status is {{ serverStatus() }}
+</h1>
+
+<input type="button" value="button is {{ allowNewServer }}" [disabled]="!allowNewServer">
+
+<div>
+  <p [innerText]="allowNewServer"></p>
+</div>
+
+<input type="button" value="create server" (click)="onCreateServer()">
+
+<div>
+  <h2>{{ serverCreationStatus }}</h2>
+</div>
+
+<div>
+  <input type="text" (input)="inputReader($event)">
+</div>
+
+<div>
+  <p>
+    {{inputChanger}}
+  </p>
+</div>
+
+
+<h1>this is two way data binding</h1>
+
+<input type="text" [(ngModel)]="binding">
+
+<h3>{{ binding }}</h3>
+
+
+
+
+<h1 *ngIf="serverCreated; else noServer">yes created</h1>
+<ng-template #noServer>
+  <p>*****there is no server****</p>
+</ng-template>

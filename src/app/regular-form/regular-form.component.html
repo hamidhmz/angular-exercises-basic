@@ -1,0 +1,4 @@
+<input type="text" [(ngModel)]="userName">
+<p>{{ userName }}</p>
+
+<button  [disabled]="userName === ''" (click)="userName = '' ">submit for make it empty</button>
