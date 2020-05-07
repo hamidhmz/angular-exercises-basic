@@ -1,40 +1,55 @@
-<h1>
-  {{ 'Server' }} number is {{ serverId }} and status is {{ serverStatus() }}
-</h1>
+<div class="container">
 
-<input type="button" value="button is {{ allowNewServer }}" [disabled]="!allowNewServer">
+  <h1>
+    {{ 'Server' }} number is {{ serverId }} and status is {{ serverStatus() }}
+  </h1>
 
-<div>
-  <p [innerText]="allowNewServer"></p>
+  <input class="btn btn-outline-success" type="button" value="button is {{ allowNewServer }}" [disabled]="!allowNewServer">
+
+  <div>
+    <p [innerText]="allowNewServer"></p>
+  </div>
+
+  <input class="btn btn-outline-primary" type="button" value="create server" (click)="onCreateServer()">
+
+  <div>
+    <h2>{{ serverCreationStatus }}</h2>
+  </div>
+
+  <div>
+    <input class="form-control" type="text" (input)="inputReader($event)">
+  </div>
+
+
+
+  <div>
+    <h1>this is send data to ts file </h1>
+    <p>
+      {{inputChanger}}
+    </p>
+  </div>
+
+
+  <h1>this is two way data binding</h1>
+
+  <input type="text" [(ngModel)]="binding">
+
+  <h3>{{ binding }}</h3>
+
+
+
+
+  <h1 *ngIf="serverCreated; else noServer">yes created</h1>
+  <ng-template #noServer>
+    <p>*****there is no server****</p>
+  </ng-template>
+
+
+
+  <div class="ngStyle">
+    <p [ngStyle]="{background: randomColor()}" [ngClass]="{ngExample:Status}">this is something</p>
+    <p [ngStyle]="{background: randomColor()}">this is something else</p>
+  </div>
+
+  <p *ngFor="let item of serverArr" [ngStyle]="{background: randomColor()}">this is something else</p>
 </div>
-
-<input type="button" value="create server" (click)="onCreateServer()">
-
-<div>
-  <h2>{{ serverCreationStatus }}</h2>
-</div>
-
-<div>
-  <input type="text" (input)="inputReader($event)">
-</div>
-
-<div>
-  <p>
-    {{inputChanger}}
-  </p>
-</div>
-
-
-<h1>this is two way data binding</h1>
-
-<input type="text" [(ngModel)]="binding">
-
-<h3>{{ binding }}</h3>
-
-
-
-
-<h1 *ngIf="serverCreated; else noServer">yes created</h1>
-<ng-template #noServer>
-  <p>*****there is no server****</p>
-</ng-template>
