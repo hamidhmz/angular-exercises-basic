@@ -14,6 +14,8 @@ import { NgIfComponent } from './ng-if/ng-if.component';
 import { BasicDirective } from './basic-directive/basicDirective.directive';
 import { EgRendererDirective } from './basic-directive-by-renderer/eg-renderer.directive';
 import { HostListenerComponent } from './host-listener/host-listener.component';
+import { HostBindingComponent } from './host-binding/host-binding.component';
+import { StructuralDirectiveDirective } from './structural-directive/structural-directive.directive';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { HostListenerComponent } from './host-listener/host-listener.component';
     BasicDirective,
     EgRendererDirective,
     HostListenerComponent,
+    HostBindingComponent,
+    StructuralDirectiveDirective,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],

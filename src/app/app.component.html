@@ -19,7 +19,8 @@
 
   <hr />
   <h1>This is directive show up</h1>
-  <p appBasicDirective>something in here</p>
+  <!-- <p [appBasicDirective]="'this is my console message'" [color]="'black'" >something in here</p> -->
+  <p [appBasicDirective]="'this is my console message'" color="red" >something in here</p>
 
   <hr />
   <h1>This is another directive show up</h1>
@@ -28,4 +29,21 @@
   <hr />
   <h1>This is HostListener show up</h1>
   <app-host-listener></app-host-listener>
+
+  <hr />
+  <h1>This is HostBinding show up</h1>
+  <app-host-binding></app-host-binding>
+
+  <hr />
+  <h1>This is costume structural directive</h1>
+  <p *appStructuralDirective="false">this is inside structural</p>
+
+  <hr />
+  <h1>This is switch case directive</h1>
+  <div [ngSwitch]="switchCaseTestValue">
+    <p *ngSwitchCase="'Hello'">Hello world</p>
+    <p *ngSwitchCase="'Hello1'"> hello world</p>
+    <p *ngSwitchCase="'Hello2'">Hello World</p>
+    <p *ngSwitchDefault> this is default val </p>
+  </div>
 </div>
