@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ServerComponent } from './server/server.component';
 import { ServersComponent } from './servers/servers.component';
-import { from } from 'rxjs';
 import { RegularFormComponent } from './regular-form/regular-form.component';
 import { NgForComponent } from './ng-for/ng-for.component';
 import { NgStyleComponent } from './ng-style/ng-style.component';
@@ -16,25 +15,62 @@ import { EgRendererDirective } from './basic-directive-by-renderer/eg-renderer.d
 import { HostListenerComponent } from './host-listener/host-listener.component';
 import { HostBindingComponent } from './host-binding/host-binding.component';
 import { StructuralDirectiveDirective } from './structural-directive/structural-directive.directive';
+import { HeaderComponent } from './header/header.component';
+import { RouterModule, Routes } from '@angular/router';
+import { BasicDirectiveComponent } from './basic-directive/basic-directive.component';
+import { EgRendererDirectiveComponent } from './eg-renderer-directive/eg-renderer-directive.component';
+import { StructuralDirectiveComponent } from './structural-directive/structural-directive.component';
+import { SwitchCaseDirectiveComponent } from './switch-case-directive/switch-case-directive.component';
+import { EgServiceComponent } from './eg-service/eg-service.component';
+import { RouteWorkComponent } from './route-work/route-work.component';
+import { ChildRouteComponent } from './child-route/child-route.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { AppRouteModule } from './app-route.module';
+import { AuthGuard } from './auth-guard.service';
+import { AuthService } from './auth.service';
+import { CanDeactivateComponent } from './can-deactivate/can-deactivate.component';
+import { CanDeactivateGuard } from './can-deactivate/can-deactivate-guard.service';
+import { StaticDataPassingComponent } from './static-data-passing/static-data-passing.component';
+import { DynamicDataPassingComponent } from './dynamic-data-passing/dynamic-data-passing.component';
+import { ServersService } from './service/servers.service';
+import { ServerResolver } from './dynamic-data-passing/server-resolver.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ServerComponent,
-    ServersComponent,
-    RegularFormComponent,
-    NgForComponent,
-    NgStyleComponent,
-    NgClassComponent,
-    NgIfComponent,
-    BasicDirective,
-    EgRendererDirective,
-    HostListenerComponent,
-    HostBindingComponent,
-    StructuralDirectiveDirective,
-  ],
-  imports: [BrowserModule, FormsModule],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        ServerComponent,
+        ServersComponent,
+        RegularFormComponent,
+        NgForComponent,
+        NgStyleComponent,
+        NgClassComponent,
+        NgIfComponent,
+        BasicDirective,
+        EgRendererDirective,
+        HostListenerComponent,
+        HostBindingComponent,
+        StructuralDirectiveDirective,
+        HeaderComponent,
+        BasicDirectiveComponent,
+        EgRendererDirectiveComponent,
+        StructuralDirectiveComponent,
+        SwitchCaseDirectiveComponent,
+        EgServiceComponent,
+        RouteWorkComponent,
+        ChildRouteComponent,
+        NotFoundComponent,
+        CanDeactivateComponent,
+        StaticDataPassingComponent,
+        DynamicDataPassingComponent,
+    ],
+    imports: [BrowserModule, FormsModule, RouterModule, AppRouteModule],
+    providers: [
+        AuthGuard,
+        AuthService,
+        CanDeactivateGuard,
+        ServersService,
+        ServerResolver,
+    ],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

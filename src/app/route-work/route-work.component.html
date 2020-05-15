@@ -1,0 +1,35 @@
+<hr />
+<h1>this is route component</h1>
+<router-outlet></router-outlet>
+
+
+<a
+    class="btn btn-primary"
+    routerLink="/app-route-work/12/eman-gamal"
+    [queryParams]="{ kind: '1' }"
+    fragment="beautiful"
+    role="button"
+>
+    change to Eman Gamal
+</a>
+<hr />
+<a
+    class="btn btn-primary"
+    [queryParams]="{ kind: '5' }"
+    routerLink="/app-route-work/1/hamidreze-nasrollahi"
+    role="button"
+>
+    change to hamidreza
+</a>
+
+<hr />
+<button
+    type="button"
+    (click)="GoToNGIf()"
+    class="btn btn-primary"
+    data-toggle="button"
+    aria-pressed="false"
+    autocomplete="off"
+>
+    GoToNGIf
+</button>

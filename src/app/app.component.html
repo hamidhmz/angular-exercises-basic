@@ -1,7 +1,9 @@
-<app-servers></app-servers>
+<app-header></app-header>
+<!-- <app-servers></app-servers> -->
 
 <div class="container">
-  <hr />
+    <router-outlet></router-outlet>
+    <!-- <hr />
   <h1>This is Ng Class</h1>
   <app-ng-class></app-ng-class>
 
@@ -18,9 +20,9 @@
   <app-ng-style></app-ng-style>
 
   <hr />
-  <h1>This is directive show up</h1>
-  <!-- <p [appBasicDirective]="'this is my console message'" [color]="'black'" >something in here</p> -->
-  <p [appBasicDirective]="'this is my console message'" color="red" >something in here</p>
+  <h1>This is directive show up</h1> -->
+    <!-- <p [appBasicDirective]="'this is my console message'" [color]="'black'" >something in here</p> -->
+    <!-- <p [appBasicDirective]="'this is my console message'" color="red" >something in here</p>
 
   <hr />
   <h1>This is another directive show up</h1>
@@ -46,4 +48,8 @@
     <p *ngSwitchCase="'Hello2'">Hello World</p>
     <p *ngSwitchDefault> this is default val </p>
   </div>
+
+  <hr />
+  <h1>This is service </h1>
+  <button class="btn btn-danger" (click)="logMyAction()"> Test My Service Logger</button> -->
 </div>
