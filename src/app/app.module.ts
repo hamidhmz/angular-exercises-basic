@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ServerComponent } from './server/server.component';
@@ -34,6 +34,10 @@ import { StaticDataPassingComponent } from './static-data-passing/static-data-pa
 import { DynamicDataPassingComponent } from './dynamic-data-passing/dynamic-data-passing.component';
 import { ServersService } from './service/servers.service';
 import { ServerResolver } from './dynamic-data-passing/server-resolver.service';
+import { ObservableIntervalExampleComponent } from './observable-interval-example/observable-interval-example.component';
+import { CostumeIntervalObservableComponent } from './costume-interval-observable/costume-interval-observable.component';
+import { FormEgTDComponent } from './form-eg-td/form-eg-td.component';
+import { FormEgReactiveComponent } from './form-eg-reactive/form-eg-reactive.component';
 
 @NgModule({
     declarations: [
@@ -62,8 +66,18 @@ import { ServerResolver } from './dynamic-data-passing/server-resolver.service';
         CanDeactivateComponent,
         StaticDataPassingComponent,
         DynamicDataPassingComponent,
+        ObservableIntervalExampleComponent,
+        CostumeIntervalObservableComponent,
+        FormEgTDComponent,
+        FormEgReactiveComponent,
     ],
-    imports: [BrowserModule, FormsModule, RouterModule, AppRouteModule],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
+        AppRouteModule,
+    ],
     providers: [
         AuthGuard,
         AuthService,

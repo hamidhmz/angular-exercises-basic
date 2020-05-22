@@ -1,0 +1,155 @@
+<h1>This is my form by Reactive approach</h1>
+
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="">username</label>
+        <input
+            type="text"
+            class="form-control"
+            name="username"
+            id="username"
+            placeholder="username"
+            formControlName="username"
+            required
+        />
+        <small id="username" class="form-text text-muted">
+            Enter your username
+        </small>
+        <div
+            class="invalid-feedback"
+            *ngIf="
+                signUpForm.get('username').invalid &&
+                signUpForm.get('username').touched
+            "
+        >
+        <div *ngIf="signUpForm.get('username').errors['required']">
+            Please choose a username.
+        </div>
+        <div *ngIf="signUpForm.get('username').errors['nameIsForbidden']">
+            you cannot choose Anna or Chris for username.
+        </div>
+        </div>
+        <button
+            class="btn btn-primary"
+            type="button"
+            (click)="generateUserName()"
+        >
+            Suggested UserName
+        </button>
+    </div>
+    <div class="form-group">
+        <label for="">Email</label>
+        <input
+            type="text"
+            class="form-control"
+            name="email"
+            formControlName="email"
+            id="email"
+            placeholder="test@test.com"
+            required
+        />
+        <small id="email" class="form-text text-muted">
+            Enter your email
+        </small>
+        <div
+            class="invalid-feedback"
+            *ngIf="
+                signUpForm.get('email').invalid &&
+                signUpForm.get('email').touched
+            "
+        >
+            Please choose a email.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="my-select">Secret Questions</label>
+        <select
+            id="my-select"
+            class="form-control"
+            name="secret"
+            formControlName="secret"
+        >
+            <option value="pet">Your first Pet??</option>
+            <option value="teacher">Your first teacher?</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="my-textarea">Write Some Text</label>
+        <textarea
+            formControlName="text"
+            id="my-textarea"
+            class="form-control"
+            name="text"
+            rows="3"
+        ></textarea>
+        <small id="my-textarea" class="form-text text-muted alert-danger"> </small>
+    </div>
+    <div formArrayName="hobbies" class="form-group">
+        <label >Your hobbies</label>
+        <br />
+        <button class="btn btn-danger" type="button" (click)="addHobby()">
+            Add Hobby
+        </button>
+        <br />
+        <div
+            *ngFor="
+                let hobbyControl of (signUpForm.get('hobbies'))['controls'] ;
+                let i = index
+            "
+        >
+            <br />
+            <input
+                type="text"
+                class="form-control"
+                [formControlName]="i"
+            />
+        </div>
+    </div>
+    <div class="form-check" *ngFor="let gender of genders">
+        <label class="radio-light">
+            <input
+                formControlName="gender"
+                class="form-check-input"
+                type="radio"
+                name="gender"
+                [value]="gender"
+            />{{ gender }}
+        </label>
+    </div>
+    <div class="form-group">
+        <button
+            name="submit"
+            [disabled]="!signUpForm.valid"
+            id="submit"
+            class="btn btn-primary"
+        >
+            Submit
+        </button>
+    </div>
+
+    <div class="row" *ngIf="userDetails.hasBeenSet">
+        <div class="card" style="width: 100%;">
+            <div class="card-body">
+                <h5 class="card-title">User Details</h5>
+                <p class="card-text">
+                    UserName: {{ userDetails.userName }}
+                    <br />
+                    Email: {{ userDetails.email }}
+                    <br />
+                    Secret Question: {{ userDetails.secretQuestion }}
+                    <br />
+                    Text: {{ userDetails.text }}
+                    <br />
+                    Gender: {{ userDetails.gender }}
+                    <br>
+                    My hobbies:
+                    <span *ngFor="let hobby of signUpForm.get('hobbies').value">
+
+                        <br>
+                        {{ hobby }}
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+</form>

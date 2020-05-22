@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./regular-form.component.scss']
 })
 export class RegularFormComponent implements OnInit {
-  userName:string;
+  userName: string;
   constructor() { }
 
   ngOnInit(): void {

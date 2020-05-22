@@ -1,0 +1,132 @@
+<h1>This is my form by TD approach</h1>
+
+<!-- <form (ngSubmit)="onSubmit(form)" #form>this is by el reference  -->
+<!-- <form (ngSubmit)="onSubmit(form)" #form="ngForm"> -->
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+    <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
+        <div class="form-group">
+            <label for="">username</label>
+            <input
+                type="text"
+                class="form-control"
+                name="username"
+                id="username"
+                placeholder="username"
+                ngModel
+                required
+                #username="ngModel"
+            />
+            <small id="username" class="form-text text-muted">
+                Enter your username
+            </small>
+            <div
+                class="invalid-feedback"
+                *ngIf="username.invalid && username.touched"
+            >
+                Please choose a username.
+            </div>
+            <button
+                class="btn btn-primary"
+                type="button"
+                (click)="generateUserName()"
+            >
+                Suggested UserName
+            </button>
+        </div>
+        <div class="form-group">
+            <label for="">Email</label>
+            <input
+                type="text"
+                class="form-control"
+                name="email"
+                id="email"
+                placeholder="test@test.com"
+                ngModel
+                required
+                email
+                #email="ngModel"
+            />
+            <small id="email" class="form-text text-muted"
+                >Enter your email</small
+            >
+            <div
+                class="invalid-feedback"
+                *ngIf="email.invalid && email.touched"
+            >
+                Please choose a email.
+            </div>
+        </div>
+        <div
+            class="invalid-feedback"
+            *ngIf="userData.invalid && userData.touched"
+        >
+            user data group is invalid.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="my-select">Secret Questions</label>
+        <select
+            id="my-select"
+            class="form-control"
+            name="secret"
+            [ngModel]="defaultQuestion"
+        >
+            <option value="pet">Your first Pet??</option>
+            <option value="teacher">Your first teacher?</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="my-textarea">Write Some Text</label>
+        <textarea
+            id="my-textarea"
+            [(ngModel)]="myText"
+            class="form-control"
+            name="text"
+            rows="3"
+        ></textarea>
+        <small id="email" class="form-text text-muted alert-danger">
+            {{ myText }}
+        </small>
+    </div>
+    <div class="form-check" *ngFor="let gender of genders">
+        <label class="radio-light">
+            <input
+                class="form-check-input"
+                type="radio"
+                [value]="gender"
+                ngModel
+                name="gender"
+            />
+            {{ gender }}
+        </label>
+    </div>
+    <div class="form-group">
+        <button
+            name="submit"
+            id="submit"
+            class="btn btn-primary"
+            [disabled]="!form.valid"
+        >
+            Submit
+        </button>
+    </div>
+
+    <div class="row" *ngIf="userDetails.hasBeenSet">
+        <div class="card" style="width: 100%;">
+            <div class="card-body">
+                <h5 class="card-title">User Details</h5>
+                <p class="card-text">
+                    UserName: {{ userDetails.userName }}
+                    <br />
+                    Email: {{ userDetails.email }}
+                    <br />
+                    Secret Question: {{ userDetails.secretQuestion }}
+                    <br />
+                    Text: {{ userDetails.text }}
+                    <br />
+                    Gender: {{ userDetails.gender }}
+                </p>
+            </div>
+        </div>
+    </div>
+</form>

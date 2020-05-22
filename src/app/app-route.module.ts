@@ -21,6 +21,10 @@ import { CanDeactivateGuard } from './can-deactivate/can-deactivate-guard.servic
 import { StaticDataPassingComponent } from './static-data-passing/static-data-passing.component';
 import { DynamicDataPassingComponent } from './dynamic-data-passing/dynamic-data-passing.component';
 import { ServerResolver } from './dynamic-data-passing/server-resolver.service';
+import { ObservableIntervalExampleComponent } from './observable-interval-example/observable-interval-example.component';
+import { CostumeIntervalObservableComponent } from './costume-interval-observable/costume-interval-observable.component';
+import { FormEgTDComponent } from './form-eg-td/form-eg-td.component';
+import { FormEgReactiveComponent } from './form-eg-reactive/form-eg-reactive.component';
 
 const routes: Routes = [
     {
@@ -60,6 +64,22 @@ const routes: Routes = [
     },
     { path: 'app-eg-service', component: EgServiceComponent },
     {
+        path: 'app-observable-interval-example',
+        component: ObservableIntervalExampleComponent,
+    },
+    {
+        path: 'app-costume-interval-observable',
+        component: CostumeIntervalObservableComponent,
+    },
+    {
+        path: 'app-form-TD-example',
+        component: FormEgTDComponent,
+    },
+    {
+        path: 'app-form-reactive-example',
+        component: FormEgReactiveComponent,
+    },
+    {
         path: 'app-route-work',
         // canActivate: [AuthGuard],
         // canActivateChild: [AuthGuard],
@@ -84,7 +104,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [
+        RouterModule.forRoot(routes, {
+            // useHash:true
+        }),
+    ],
     exports: [RouterModule],
 })
 export class AppRouteModule {}
