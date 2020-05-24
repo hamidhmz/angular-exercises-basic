@@ -25,6 +25,8 @@ import { ObservableIntervalExampleComponent } from './observable-interval-exampl
 import { CostumeIntervalObservableComponent } from './costume-interval-observable/costume-interval-observable.component';
 import { FormEgTDComponent } from './form-eg-td/form-eg-td.component';
 import { FormEgReactiveComponent } from './form-eg-reactive/form-eg-reactive.component';
+import { PipesComponent } from './pipes/pipes.component';
+import { HttpRequestComponent } from './http-request/http-request.component';
 
 const routes: Routes = [
     {
@@ -78,6 +80,14 @@ const routes: Routes = [
     {
         path: 'app-form-reactive-example',
         component: FormEgReactiveComponent,
+    },
+    {
+        path: 'app-pipes-example',
+        component: PipesComponent,
+    },
+    {
+        path: 'app-http-request',
+        component: HttpRequestComponent,
     },
     {
         path: 'app-route-work',

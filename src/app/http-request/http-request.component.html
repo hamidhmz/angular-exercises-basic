@@ -1,0 +1,148 @@
+<div>
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="">title</label>
+            <input
+                type="text"
+                class="form-control"
+                name="title"
+                id="title"
+                placeholder="Enter post title..."
+                formControlName="title"
+                required
+            />
+            <small id="title" class="form-text text-muted">
+                Enter post title
+            </small>
+            <div
+                class="invalid-feedback"
+                *ngIf="
+                    signUpForm.get('title').invalid &&
+                    signUpForm.get('title').touched
+                "
+            >
+                <div *ngIf="signUpForm.get('title').errors['required']">
+                    title is required.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">description</label>
+            <input
+                type="text"
+                class="form-control"
+                name="description"
+                id="description"
+                placeholder="Enter post description..."
+                formControlName="description"
+                required
+            />
+            <small id="description" class="form-text text-muted">
+                Enter post description
+            </small>
+            <div
+                class="invalid-feedback"
+                *ngIf="
+                    signUpForm.get('description').invalid &&
+                    signUpForm.get('description').touched
+                "
+            >
+                <div *ngIf="signUpForm.get('description').errors['required']">
+                    title is required.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">text</label>
+            <textarea
+                type="text"
+                class="form-control"
+                name="text"
+                id="text"
+                formControlName="text"
+                required
+            ></textarea>
+            <small id="text" class="form-text text-muted">
+                Enter post text
+            </small>
+            <div
+                class="invalid-feedback"
+                *ngIf="
+                    signUpForm.get('text').invalid &&
+                    signUpForm.get('text').touched
+                "
+            >
+                <div *ngIf="signUpForm.get('text').errors['required']">
+                    title is required.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button
+                name="submit"
+                [disabled]="!signUpForm.valid"
+                id="submit"
+                class="btn btn-primary"
+            >
+                Create Post
+            </button>
+        </div>
+    </form>
+
+    <div
+        *ngIf="createPostStatus && createPostStatus !== undefined"
+        class="alert alert-success"
+        role="alert"
+    >
+        post has been added!
+    </div>
+    <div
+        *ngIf="!createPostStatus && createPostStatus !== undefined"
+        class="alert alert-danger"
+        role="alert"
+    >
+        post hasn't been added!
+    </div>
+</div>
+<hr />
+<div>
+    <div class="row m-2" *ngIf="posts">
+        <button
+            class="btn btn-danger"
+            type="button"
+            (click)="deleteAllPosts()"
+        >
+            clear all
+        </button>
+    </div>
+    <div class="row justify-content-md-center" *ngIf="fetchingPost">
+        <h1>fetching data...</h1>
+    </div>
+    <div class="row" *ngIf="posts">
+        <div class="card" style="width: 100%;" *ngFor="let post of posts">
+            <div class="card-body">
+                <h5 class="card-title">User Details</h5>
+                <p class="card-text">
+                    title: {{ post.title }}
+                    <br />
+                    description: {{ post.description }}
+                    <br />
+                    text: {{ post.text }}
+                </p>
+            </div>
+        </div>
+        <div
+            *ngIf="!fetchPostStatus && fetchPostStatus !== undefined"
+            class="alert alert-danger"
+            role="alert"
+        >
+            cannot fetch posts!
+        </div>
+    </div>
+    <div
+        class="row justify-content-md-center"
+        *ngIf="!posts?.length && fetchPostStatus"
+    >
+        <h1>there is no post!</h1>
+    </div>
+</div>

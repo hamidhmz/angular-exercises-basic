@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ServerComponent } from './server/server.component';
@@ -38,6 +39,12 @@ import { ObservableIntervalExampleComponent } from './observable-interval-exampl
 import { CostumeIntervalObservableComponent } from './costume-interval-observable/costume-interval-observable.component';
 import { FormEgTDComponent } from './form-eg-td/form-eg-td.component';
 import { FormEgReactiveComponent } from './form-eg-reactive/form-eg-reactive.component';
+import { PipesComponent } from './pipes/pipes.component';
+import { UnderscorePipe } from './pipe/underscore.pipe';
+import { FilterPipe } from './pipe/filter.pipe';
+import { HttpRequestComponent } from './http-request/http-request.component';
+import { HttpInterceptorService } from './interceptor/http-interceptor.service';
+import { LogInterceptorService } from './interceptor/log-interceptor.service';
 
 @NgModule({
     declarations: [
@@ -70,6 +77,10 @@ import { FormEgReactiveComponent } from './form-eg-reactive/form-eg-reactive.com
         CostumeIntervalObservableComponent,
         FormEgTDComponent,
         FormEgReactiveComponent,
+        PipesComponent,
+        UnderscorePipe,
+        FilterPipe,
+        HttpRequestComponent,
     ],
     imports: [
         BrowserModule,
@@ -77,8 +88,19 @@ import { FormEgReactiveComponent } from './form-eg-reactive/form-eg-reactive.com
         ReactiveFormsModule,
         RouterModule,
         AppRouteModule,
+        HttpClientModule,
     ],
     providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: HttpInterceptorService,
+            multi: true,
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: LogInterceptorService,
+            multi: true,
+        },
         AuthGuard,
         AuthService,
         CanDeactivateGuard,
