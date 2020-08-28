@@ -9,6 +9,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { FetchRequestService } from './fetch-request.service';
 import { catchError, tap } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 type Post = { title: string; description: string; text: string };
 type response = { status: 'success' | 'fail'; data: [Post] };
@@ -26,7 +27,8 @@ export class HttpRequestComponent implements OnInit {
 
     constructor(
         private http: HttpClient,
-        private FetchRequestService: FetchRequestService
+        private FetchRequestService: FetchRequestService,
+        private authService: AuthService
     ) {}
 
     ngOnInit(): void {
@@ -83,6 +85,9 @@ export class HttpRequestComponent implements OnInit {
                 },
                 (error) => {
                     console.log('error: ', error);
+                    if (error.status === 401) {
+                        this.authService.logout();
+                    }
                     this.createPostStatus = false;
                 },
                 () => {

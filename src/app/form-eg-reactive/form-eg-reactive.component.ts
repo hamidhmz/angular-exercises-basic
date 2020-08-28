@@ -80,6 +80,7 @@ export class FormEgReactiveComponent implements OnInit {
     }
 
     onSubmit() {
+        console.log('do something')
         console.log(this.signUpForm);
         this.userDetails.userName = this.signUpForm.value.username;
         this.userDetails.email = this.signUpForm.value.email;

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from './auth/auth.service';
 import { Logger } from './service/Logger.service';
 
 @Component({
@@ -7,9 +8,13 @@ import { Logger } from './service/Logger.service';
     styleUrls: ['./app.component.scss'],
     providers: [Logger],
 })
-export class AppComponent {
-    constructor(private myLogger: Logger) {}
+export class AppComponent implements OnInit {
+    constructor(private myLogger: Logger, private authService: AuthService) {}
     logMyAction() {
         this.myLogger.info('hello');
+    }
+
+    ngOnInit() {
+        this.authService.autoLogin();
     }
 }

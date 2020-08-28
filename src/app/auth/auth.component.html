@@ -1,0 +1,177 @@
+<ng-template appPlaceholder></ng-template>
+
+<div *ngIf="isLoading" class="text-center m-5">
+    <app-loadin-spinner></app-loadin-spinner>
+</div>
+<!-- <div *ngIf="errorMsg" class="alert alert-danger  fade show " role="alert">
+    {{errorMsg}}
+</div> -->
+<!-- <app-alert-dynamic-component
+    [message]="errorMsg"
+    *ngIf="errorMsg"
+></app-alert-dynamic-component> -->
+
+
+
+<form
+    *ngIf="isLogin && !isLoading"
+    [formGroup]="authForm"
+    (ngSubmit)="onSubmitAuth()"
+>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input
+            type="email"
+            class="form-control"
+            [ngClass]="{
+                'is-invalid':
+                    authForm.get('email').invalid &&
+                    authForm.get('email').touched
+            }"
+            id="email"
+            name="email"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+            formControlName="email"
+            required
+        />
+        <small id="emailHelp" class="form-text dark text-muted">
+            We'll never share your email with anyone else.
+        </small>
+        <div class="invalid-feedback">Please choose a email.</div>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input
+            type="password"
+            class="form-control"
+            [ngClass]="{
+                'is-invalid':
+                    authForm.get('password').invalid &&
+                    authForm.get('password').touched
+            }"
+            id="password"
+            name="password"
+            placeholder="Password"
+            formControlName="password"
+            required
+        />
+        <div class="invalid-feedback">Please choose a password.</div>
+    </div>
+    <button type="submit" [disabled]="authForm.invalid" class="btn btn-primary">
+        {{ isLogin ? "login" : "sign up" }}
+    </button>
+    |
+    <button
+        (click)="switchLoginToSignUp()"
+        class="btn btn-primary"
+        type="button"
+    >
+        switch to {{ isLogin ? "sign up" : "login" }}
+    </button>
+</form>
+<form
+    *ngIf="!isLogin && !isLoading"
+    [formGroup]="signUpForm"
+    (ngSubmit)="onSubmitSignUp()"
+>
+    <div class="form-group">
+        <label for="nameHelp">name</label>
+        <input
+            type="text"
+            class="form-control"
+            [ngClass]="{
+                'is-invalid':
+                    signUpForm.get('name').invalid &&
+                    signUpForm.get('name').touched
+            }"
+            id="name"
+            name="name"
+            aria-describedby="nameHelp"
+            placeholder="Enter name"
+            formControlName="name"
+            required
+        />
+        <small id="nameHelp" class="form-text dark text-muted">
+            We'll never share your name with anyone else.
+        </small>
+        <div class="invalid-feedback">Please choose a name.</div>
+    </div>
+    <div class="form-group">
+        <label for="emailHelp">Email address</label>
+        <input
+            type="email"
+            class="form-control"
+            [ngClass]="{
+                'is-invalid':
+                    signUpForm.get('email').invalid &&
+                    signUpForm.get('email').touched
+            }"
+            id="email"
+            name="email"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+            formControlName="email"
+            required
+        />
+        <small id="emailHelp" class="form-text dark text-muted">
+            We'll never share your email with anyone else.
+        </small>
+        <div class="invalid-feedback">Please choose a email.</div>
+    </div>
+    <div class="form-group">
+        <label for="mobileHelp">mobile</label>
+        <input
+            type="mobile"
+            class="form-control"
+            [ngClass]="{
+                'is-invalid':
+                    signUpForm.get('mobile').invalid &&
+                    signUpForm.get('mobile').touched
+            }"
+            id="mobile"
+            name="mobile"
+            aria-describedby="mobileHelp"
+            placeholder="Enter mobile"
+            formControlName="mobile"
+            required
+        />
+        <small id="mobileHelp" class="form-text dark text-muted">
+            We'll never share your mobile with anyone else.
+        </small>
+        <div class="invalid-feedback">Please choose a mobile.</div>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input
+            type="password"
+            class="form-control"
+            [ngClass]="{
+                'is-invalid':
+                    signUpForm.get('password').invalid &&
+                    signUpForm.get('password').touched
+            }"
+            id="password"
+            name="password"
+            placeholder="Password"
+            formControlName="password"
+            required
+        />
+        <div class="invalid-feedback">Please choose a password.</div>
+    </div>
+    <button
+        type="submit"
+        [disabled]="signUpForm.invalid"
+        class="btn btn-primary"
+    >
+        {{ isLogin ? "login" : "sign up" }}
+    </button>
+    |
+    <button
+        (click)="switchLoginToSignUp()"
+        class="btn btn-primary"
+        type="button"
+    >
+        switch to {{ isLogin ? "sign up" : "login" }}
+    </button>
+</form>

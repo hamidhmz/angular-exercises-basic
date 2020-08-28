@@ -27,72 +27,117 @@ import { FormEgTDComponent } from './form-eg-td/form-eg-td.component';
 import { FormEgReactiveComponent } from './form-eg-reactive/form-eg-reactive.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { HttpRequestComponent } from './http-request/http-request.component';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
     {
         path: 'app-dynamic-data/:id',
+        canActivate: [AuthGuard],
         component: DynamicDataPassingComponent,
         resolve: { server: ServerResolver },
     },
     {
         path: 'app-static-data',
+        canActivate: [AuthGuard],
         component: StaticDataPassingComponent,
         data: { message: 'hello hamid' },
     },
     {
         path: 'app-can-deactivate',
+        canActivate: [AuthGuard],
         component: CanDeactivateComponent,
         canDeactivate: [CanDeactivateGuard],
     },
-    { path: 'app-servers', component: ServersComponent },
-    { path: 'app-ng-class', component: NgClassComponent },
-    { path: 'app-ng-if', component: NgIfComponent },
-    { path: 'app-ng-for', component: NgForComponent },
-    { path: 'app-ng-style', component: NgStyleComponent },
-    { path: 'app-basic-directive', component: BasicDirectiveComponent },
+    {
+        path: 'app-servers',
+        canActivate: [AuthGuard],
+        component: ServersComponent,
+    },
+    {
+        path: 'app-ng-class',
+        canActivate: [AuthGuard],
+        component: NgClassComponent,
+    },
+    { path: 'app-ng-if', canActivate: [AuthGuard], component: NgIfComponent },
+    { path: 'app-ng-for', canActivate: [AuthGuard], component: NgForComponent },
+    {
+        path: 'app-ng-style',
+        canActivate: [AuthGuard],
+        component: NgStyleComponent,
+    },
+    {
+        path: 'app-basic-directive',
+        canActivate: [AuthGuard],
+        component: BasicDirectiveComponent,
+    },
     {
         path: 'app-eg-renderer-directive',
+        canActivate: [AuthGuard],
         component: EgRendererDirectiveComponent,
     },
-    { path: 'app-host-binding', component: HostBindingComponent },
-    { path: 'app-host-listener', component: HostListenerComponent },
+    {
+        path: 'app-host-binding',
+        canActivate: [AuthGuard],
+        component: HostBindingComponent,
+    },
+    {
+        path: 'app-host-listener',
+        canActivate: [AuthGuard],
+        component: HostListenerComponent,
+    },
     {
         path: 'app-structural-directive',
+        canActivate: [AuthGuard],
         component: StructuralDirectiveComponent,
     },
     {
         path: 'app-switch-case-directive',
+        canActivate: [AuthGuard],
         component: SwitchCaseDirectiveComponent,
     },
-    { path: 'app-eg-service', component: EgServiceComponent },
+    {
+        path: 'app-eg-service',
+        canActivate: [AuthGuard],
+        component: EgServiceComponent,
+    },
     {
         path: 'app-observable-interval-example',
+        canActivate: [AuthGuard],
         component: ObservableIntervalExampleComponent,
     },
     {
         path: 'app-costume-interval-observable',
+        canActivate: [AuthGuard],
         component: CostumeIntervalObservableComponent,
     },
     {
         path: 'app-form-TD-example',
+        canActivate: [AuthGuard],
         component: FormEgTDComponent,
     },
     {
         path: 'app-form-reactive-example',
+        canActivate: [AuthGuard],
         component: FormEgReactiveComponent,
     },
     {
         path: 'app-pipes-example',
+        canActivate: [AuthGuard],
         component: PipesComponent,
     },
     {
         path: 'app-http-request',
+        canActivate: [AuthGuard],
         component: HttpRequestComponent,
     },
     {
+        path: 'app-auth',
+        component: AuthComponent,
+    },
+    {
         path: 'app-route-work',
-        // canActivate: [AuthGuard],
-        // canActivateChild: [AuthGuard],
+        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
         component: RouteWorkComponent,
         children: [
             {

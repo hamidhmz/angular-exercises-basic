@@ -45,6 +45,10 @@ import { FilterPipe } from './pipe/filter.pipe';
 import { HttpRequestComponent } from './http-request/http-request.component';
 import { HttpInterceptorService } from './interceptor/http-interceptor.service';
 import { LogInterceptorService } from './interceptor/log-interceptor.service';
+import { AuthComponent } from './auth/auth.component';
+import { LoadinSpinnerComponent } from './loadin-spinner/loadin-spinner.component';
+import { AlertDynamicComponentComponent } from './alert-dynamic-component/alert-dynamic-component.component';
+import { PlaceholderDirective } from './alert-dynamic-component/placeholder/placeholder.directive';
 
 @NgModule({
     declarations: [
@@ -81,6 +85,10 @@ import { LogInterceptorService } from './interceptor/log-interceptor.service';
         UnderscorePipe,
         FilterPipe,
         HttpRequestComponent,
+        AuthComponent,
+        LoadinSpinnerComponent,
+        AlertDynamicComponentComponent,
+        PlaceholderDirective,
     ],
     imports: [
         BrowserModule,
