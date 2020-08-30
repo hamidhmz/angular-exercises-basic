@@ -17,7 +17,7 @@ import { HostListenerComponent } from './host-listener/host-listener.component';
 import { HostBindingComponent } from './host-binding/host-binding.component';
 import { StructuralDirectiveDirective } from './structural-directive/structural-directive.directive';
 import { HeaderComponent } from './header/header.component';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { BasicDirectiveComponent } from './basic-directive/basic-directive.component';
 import { EgRendererDirectiveComponent } from './eg-renderer-directive/eg-renderer-directive.component';
 import { StructuralDirectiveComponent } from './structural-directive/structural-directive.component';
@@ -37,7 +37,6 @@ import { ServersService } from './service/servers.service';
 import { ServerResolver } from './dynamic-data-passing/server-resolver.service';
 import { ObservableIntervalExampleComponent } from './observable-interval-example/observable-interval-example.component';
 import { CostumeIntervalObservableComponent } from './costume-interval-observable/costume-interval-observable.component';
-import { FormEgTDComponent } from './form-eg-td/form-eg-td.component';
 import { FormEgReactiveComponent } from './form-eg-reactive/form-eg-reactive.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { UnderscorePipe } from './pipe/underscore.pipe';
@@ -49,6 +48,7 @@ import { AuthComponent } from './auth/auth.component';
 import { LoadinSpinnerComponent } from './loadin-spinner/loadin-spinner.component';
 import { AlertDynamicComponentComponent } from './alert-dynamic-component/alert-dynamic-component.component';
 import { PlaceholderDirective } from './alert-dynamic-component/placeholder/placeholder.directive';
+import { FormTDModule } from './form-eg-td/form-td.module';
 
 @NgModule({
     declarations: [
@@ -79,7 +79,6 @@ import { PlaceholderDirective } from './alert-dynamic-component/placeholder/plac
         DynamicDataPassingComponent,
         ObservableIntervalExampleComponent,
         CostumeIntervalObservableComponent,
-        FormEgTDComponent,
         FormEgReactiveComponent,
         PipesComponent,
         UnderscorePipe,
@@ -97,6 +96,7 @@ import { PlaceholderDirective } from './alert-dynamic-component/placeholder/plac
         RouterModule,
         AppRouteModule,
         HttpClientModule,
+        FormTDModule,
     ],
     providers: [
         {

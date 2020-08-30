@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { ServersComponent } from './servers/servers.component';
 import { NgClassComponent } from './ng-class/ng-class.component';
 import { NgIfComponent } from './ng-if/ng-if.component';
@@ -23,7 +23,6 @@ import { DynamicDataPassingComponent } from './dynamic-data-passing/dynamic-data
 import { ServerResolver } from './dynamic-data-passing/server-resolver.service';
 import { ObservableIntervalExampleComponent } from './observable-interval-example/observable-interval-example.component';
 import { CostumeIntervalObservableComponent } from './costume-interval-observable/costume-interval-observable.component';
-import { FormEgTDComponent } from './form-eg-td/form-eg-td.component';
 import { FormEgReactiveComponent } from './form-eg-reactive/form-eg-reactive.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { HttpRequestComponent } from './http-request/http-request.component';
@@ -113,7 +112,7 @@ const routes: Routes = [
     {
         path: 'app-form-TD-example',
         canActivate: [AuthGuard],
-        component: FormEgTDComponent,
+        loadChildren: () => import('./form-eg-td/form-td.module').then((module)=> module.FormTDModule)
     },
     {
         path: 'app-form-reactive-example',
@@ -161,7 +160,8 @@ const routes: Routes = [
 @NgModule({
     imports: [
         RouterModule.forRoot(routes, {
-            // useHash:true
+            preloadingStrategy: PreloadAllModules
+            // useHash:true //useful for old browser
         }),
     ],
     exports: [RouterModule],
